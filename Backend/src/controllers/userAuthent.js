@@ -186,6 +186,12 @@ const register = async (req,res)=>{
      const user =  await User.create(req.body);
      console.log(user);
      const token =  jwt.sign({_id:user._id , emailId:emailId, role:'user'},process.env.JWT_KEY,{expiresIn: 60*60});
+      res.cookie("token",token,{
+        httpOnly:true,
+        secure: process.env.NODE_ENV==="production",
+        sameSite:process.env.NODE_ENV==="production" ? "none" :"strict",
+        maxAge: 24*60*60,
+    });
      const reply = {
         firstName: user.firstName,
         emailId: user.emailId,
@@ -230,7 +236,12 @@ const login = async (req,res)=>{
         }
 
         const token =  jwt.sign({_id:user._id , emailId:emailId, role:user.role},process.env.JWT_KEY,{expiresIn: 60*60});
-        res.cookie('token',token,{maxAge: 60*60*1000});
+       res.cookie("token",token,{
+        httpOnly:true,
+        secure: process.env.NODE_ENV==="production",
+        sameSite:process.env.NODE_ENV==="production" ? "none" :"strict",
+        maxAge: 60*60,
+    });
         res.status(201).json({
             user:reply,
             message:"Loggin Successfully"
