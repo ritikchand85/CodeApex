@@ -38,7 +38,17 @@ Since it doesn’t need to enforce browser security policies, it doesn’t care 
 It simply sends the HTTP request and shows you the raw response.
 
 👉 Postman assumes you know what you’re doing. There’s no “user protection” layer like in browsers.*/
-    origin: 'http://localhost:5173',
+      origin: function (origin, callback) {
+      if (
+        !origin ||
+        origin.endsWith(".vercel.app") ||
+        origin === "http://localhost:5173"
+      ) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true 
 }))
 
