@@ -187,9 +187,7 @@ const register = async (req,res)=>{
      console.log(user);
      const token =  jwt.sign({_id:user._id , emailId:emailId, role:'user'},process.env.JWT_KEY,{expiresIn: 60*60});
       res.cookie("token",token,{
-        httpOnly:true,
-        secure: process.env.NODE_ENV==="production",
-        sameSite:process.env.NODE_ENV==="production" ? "none" :"strict",
+       
         //maxAge is in milisecond
         maxAge: 24*60*60*1000,
     });
@@ -238,9 +236,7 @@ const login = async (req,res)=>{
 
         const token =  jwt.sign({_id:user._id , emailId:emailId, role:user.role},process.env.JWT_KEY,{expiresIn: 60*60});
        res.cookie("token",token,{
-        httpOnly:true,
-        secure: process.env.NODE_ENV==="production",
-        sameSite:process.env.NODE_ENV==="production" ? "none" :"strict",
+       
         maxAge: 24*60*60*1000,
     });
         res.status(201).json({
@@ -269,9 +265,7 @@ const logout = async(req,res)=>{
     //    Cookies ko clear kar dena.....
 
    res.cookie("token",null,{
-        httpOnly:true,
-        secure: process.env.NODE_ENV==="production",
-        sameSite:process.env.NODE_ENV==="production" ? "none" :"strict",
+        
         maxAge: 24*60*60*1000,
     });
     res.send("Logged Out Succesfully");
@@ -297,9 +291,7 @@ const adminRegister = async(req,res)=>{
      const user =  await User.create(req.body);
      const token =  jwt.sign({_id:user._id , emailId:emailId, role:user.role},process.env.JWT_KEY,{expiresIn: 60*60});
       res.cookie("token",token,{
-        httpOnly:true,
-        secure: process.env.NODE_ENV==="production",
-        sameSite:process.env.NODE_ENV==="production" ? "none" :"strict",
+   
         maxAge: 24*60*60*1000,
     });
      res.status(201).send("User Registered Successfully");
