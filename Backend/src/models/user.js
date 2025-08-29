@@ -50,6 +50,7 @@
 //     required:true
 //    }
 // },{
+// strict:false
 
 //     /*The timestamps: true option automatically adds two critical fields to your documents:
 
@@ -85,7 +86,8 @@
 
 
 
-
+//by default hamne apne schema ko fixed rakha hai means hum runtime me koi extra field add nhi kar sakte agar karenge to mongoose us field ko  ignore kar dega and vo field document me store nhi hogi .agar kisi field ko hamne schema me define kiya hai and runtime me us field ko set na kare  aur vo required:true nhi hai to hum aisa kar sakte hai if required:true hai to validation error dega.
+//agar hum chahte hai ki runtime me bhi extra field add kar sake to strict:false use karo
 
 const mongoose = require('mongoose');
 const {Schema} = mongoose;

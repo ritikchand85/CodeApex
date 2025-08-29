@@ -124,7 +124,7 @@
     "range-parser": "^1.2.1",
     "raw-body": "^3.0.0",
     "readable-stream": "^3.6.2",
-    "redis": "^5.8.0",
+    "redis": "^5.8.2",
     "rimraf": "^3.0.2",
     "router": "^2.2.0",
     "safe-buffer": "^5.2.1",
