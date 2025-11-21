@@ -26,6 +26,8 @@ function ChatAi({problem}) {
         reset();
 
         try {
+
+            
             
             const response = await axiosClient.post("/ai/chat", {
                 //ai ko us problem ke related info bhi deni padegi taaki samaj paye aur ye hum system information me dalenge taaki koi change na kar sake
