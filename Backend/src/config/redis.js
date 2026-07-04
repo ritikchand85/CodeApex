@@ -24,10 +24,12 @@ const redisClient = redis.createClient({
     username: 'default',
     password: process.env.REDIS_PASS,
     socket: {
-        host: 'redis-17900.crce262.us-east-1-1.ec2.cloud.redislabs.com',
-        port: 17900
+        host: 'redis-17982.c309.us-east-2-1.ec2.cloud.redislabs.com',
+        port: 17982
     }
 });
+
+
 
 redisClient.on('error', err => console.log('Redis Client Error', err));
 

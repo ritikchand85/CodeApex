@@ -11,7 +11,7 @@ const solveDoubt = async(req , res)=>{
        
         async function main() {
         const response = await ai.models.generateContent({
-        model: "gemini-2.0-flash",
+        model: "gemini-3.5-flash",
         contents: messages,
         config: {
             //systemInstruction apne llm model ko btane ke liye ki tujhe keval code se related hi answer karna hai varna users iska misuse kar sakte hai aur bill mere upar aayega
